@@ -1,0 +1,91 @@
+<%- include('header') %>
+
+<!doctype html>
+
+        <div class="breadcrumbs">
+            <div class="breadcrumbs-inner">
+                <div class="row m-0">
+                    <div class="col-sm-4">
+                        <div class="page-header float-left">
+                            <div class="page-title">
+                                <h1>view product</h1>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="animated fadeIn">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">product</strong>
+                            </div>
+                            <div class="table-stats order-table ov-h">
+                                <table class="table ">
+                                    <thead>
+                                        <tr>
+                                            
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Quantity</th>
+                                            <!-- <th>image</th>                                             -->
+                                            <th>Action</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% data.map((val,index)=>{ %>
+                                            <tr>
+                                                <td>
+                                                    <%= index + 1 %>
+                                                </td>
+                                                <td>
+                                                    <%= val.name %>
+                                                </td>
+                                                <td>
+                                                    <%= val.price %>
+                                                </td>
+                                                <td>
+                                                    <%= val.qty %>
+                                                </td>
+                                                <!-- <td>
+                                                    <td><img src="<%= val.avatar %>"/></td>
+                                                </td> -->
+                                                <td>
+                                                    <a href="/DeleteData/<%= val.id %>" class="btn btn-danger">Delete</a>||                                    
+                                                    <a href="/EditData/<%= val.id %>" class="btn btn-success">Edit</a>
+                                                </td>
+                                                <% if(val.status===1){ %>
+                                                    <td>
+                                                        <a href="/active/<%= val.id %>" class="btn btn-primary">Active</a>
+                                                    </td>
+                                                    <% } else{ %>
+                                                        <td>
+                                                            <a href="/deactive/<%= val.id %>"
+                                                                class="btn btn-warning">Deactive</a>
+                                                        </td>
+        
+                                                        <% } %>
+        
+                                            </tr>
+                                            <% }) %>
+        
+                                    </tbody>
+                                </table>
+                            </div> <!-- /.table-stats -->
+                        </div>
+                    </div>
+                    
+                </div>               
+            </div>                    
+        </div>
+</body>
+</html>
+
+<%- include('footer') %>
